@@ -20,6 +20,16 @@
                 <a href="{% url 'post_new' %}">+ New Blog Post</a>
             </Div>
         </header>
+        <!-- We can use the is_authenticated attribute for Login -->
+        {% if user.is_authenticated %}
+            <p>Hi {{ user.username }}!</p>
+            <!--  Logout -->
+            <p><a href="{% url 'logout' %}">Log out</a></p>
+        {% else %}
+            <p>You are not logged in.</p>
+            <a href="{% url 'login' %}">Log In</a>
+        {% endif %}
+
         {% block content %}
         {% endblock content %}
     </div>
